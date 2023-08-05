@@ -8,7 +8,7 @@ else
 fi
 
 if [[ ! -e /Applications/iTerm.app ]]; then
-    brew cask install iterm2
+    brew install --cask iterm2
     defaults delete com.googlecode.iterm2
     ln -s ~/.macbootstrap/config/com.googlecode.iterm2.plist $HOME/Library/Preferences
     # config background image location
@@ -27,7 +27,7 @@ else
 fi
 
 if [[ ! -e /Applications/WeChat.app ]]; then
-    brew cask install wechat
+    brew install --cask wechat
 else
     echo "You have installed WeChat"
 fi
