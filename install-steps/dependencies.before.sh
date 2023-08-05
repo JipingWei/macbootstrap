@@ -15,6 +15,3 @@ else
     echo "command source ~/.macbootstrap/zsh-config/bs_lldb_extension" >> ~/.lldbinit
 fi
 
-# CodeRunner
-# ---------------
-brew cask install coderunner

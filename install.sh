@@ -1,21 +1,10 @@
 #!/bin/sh
 source basic.sh
 
-if [[ ! -e /usr/local/bin/sslocal ]]; then
-    brew install shadowsocks-libev
-    brew services start shadowsocks-libev
-    ln -s /usr/local/opt/shadowsocks-libev/bin/ss-local /usr/local/bin/sslocal
-    ln -s /usr/local/opt/shadowsocks-libev/bin/ss-server /usr/local/bin/ss-server
+if [[ ! -e /Applications/Alfred.app ]]; then
+    brew install --cask alfred
 else
-    echo "You have installed shadowsocks"
-fi
-
-# install and use shadowsocks
-if not_tt_network; then
-    nohup sslocal -c ~/.macbootstrap/tools/netconf &> /private/tmp/nohup.out&
-    #export ALL_PROXY=socks5://127.0.0.1:14179
-else
-    echo "You are in toutiao network, no need to use ss now"
+    echo "You have installed alfred"
 fi
 
 if [[ ! -e /Applications/iTerm.app ]]; then
@@ -31,10 +20,10 @@ else
     echo "You have installed iTerm2"
 fi
 
-if [[ ! -e /Applications/SourceTree.app ]]; then
-    brew cask install sourcetree
+if [[ ! -e /Applications/Fork.app ]]; then
+    brew install --cask fork
 else
-    echo "You have installed SourceTree"
+    echo "You have installed fork"
 fi
 
 if [[ ! -e /Applications/WeChat.app ]]; then
@@ -44,7 +33,7 @@ else
 fi
 
 if [[ ! -e /Applications/Google\ Chrome.app ]]; then
-    brew cask install google-chrome
+    brew install --cask google-chrome
 
     # Set Chrome as default browser
     git clone https://github.com/kerma/defaultbrowser ./tools/defaultbrowser
@@ -56,8 +45,7 @@ else
 fi
 
 if [[ ! -e /Applications/Visual\ Studio\ Code.app ]]; then
-    brew cask install visual-studio-code
-    sh ./vscode/setup.sh
+    brew install --cask visual-studio-code
 else
     echo "You have installed vscode"
 fi
@@ -132,19 +120,6 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 ln -s ~/.macbootstrap/zsh-config/.zshrc ~/.zshrc
 
-# vim configuration
-backup_file ~/.vim
-backup_file ~/.config/nvim/
-git clone https://github.com/bestswifter/vim-config.git ~/.config/nvim
-ln -s ~/.config/nvim ~/.vim
-backup_file ~/.ideavimrc
-ln -s ~/.config/ideavimrc ~/.ideavimrc
-
-# ESLint configuration
-backup_file ~/.eslintrc.js
-backup_file ~/.eslintrc
-ln -s ~/.macbootstrap/.eslintrc.js ~/.eslintrc.js
-
 # Ranger configuration
 if [[ ! -e $HEME/.config/ranger ]]; then
     mkdir -p $HOME/.config/ranger
@@ -157,11 +132,8 @@ ln -s ~/.macbootstrap/config/ranger/commands.py "$old_commands_py"
 ln -s ~/.macbootstrap/config/ranger/rc.conf "$old_rc_conf"
 
 ./install-steps/dependencies.before.sh
-
-unset ALL_PROXY
 ./install-steps/dependencies.after.sh
 sudo ./install-steps/macos.sh
-./install-steps/sogou_sync.sh
 
 # ssh configuration
 backup_file ~/.ssh/config
