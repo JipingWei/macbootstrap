@@ -13,6 +13,6 @@ fi
 
 brew install git
 
-git clone --depth=1 -b ${BRANCH} git@github.com:JipingWei/macbootstrap.git ~/.macbootstrap
+git clone --depth=1 -b ${BRANCH} git@github.com:freelf/macbootstrap.git ~/.macbootstrap
 cd ~/.macbootstrap
 bash install.sh
