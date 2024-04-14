@@ -32,16 +32,16 @@ else
     echo "You have installed WeChat"
 fi
 
-if [[ ! -e /Applications/Google\ Chrome.app ]]; then
-    brew install --cask google-chrome
+if [[ ! -e /Applications/Microsoft\ Edge.app ]]; then
+    brew install --cask microsoft-edge
 
     # Set Chrome as default browser
     git clone https://github.com/kerma/defaultbrowser ./tools/defaultbrowser
     (cd ./tools/defaultbrowser && make && make install)
-    defaultbrowser chrome
+    defaultbrowser edgemac
     [[ -d ./tools/defaultbrowser ]] && rm -rf ./tools/defaultbrowser
 else
-    echo "You have installed chrome"
+    echo "You have installed Edge"
 fi
 
 if [[ ! -e /Applications/Visual\ Studio\ Code.app ]]; then
@@ -135,12 +135,6 @@ ln -s ~/.macbootstrap/config/ranger/rc.conf "$old_rc_conf"
 ./install-steps/dependencies.after.sh
 sudo ./install-steps/macos.sh
 
-# ssh configuration
-backup_file ~/.ssh/config
-if [[ ! -e ~/.ssh ]]; then
-    mkdir ~/.ssh
-fi
-ln -s ~/.macbootstrap/zsh-config/ssh_config ~/.ssh/config
 
 # Personal
 ./install-steps/personal.sh
