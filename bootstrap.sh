@@ -7,6 +7,8 @@ fi
 
 if [[ ! -e /usr/local/bin/brew ]]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/freelf/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 else
     echo "You have installed brew"
 fi
